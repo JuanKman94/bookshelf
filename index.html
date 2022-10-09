@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Books</title>
+  <link rel="stylesheet" href="./styles.css">
+  <script src="./js/epub.js"></script>
+  <script src="./js/jquery.min.js"></script>
+  <script src="./js/unpkg-jszip.min.js"></script>
+  <script src="./js/reader.js"></script>
+</head>
+<body>
+  <h1 class="x-large m-0">My Books</h1>
+  <h2 id="book_title" class="xx-large my-2"></h2>
+
+  <section id="book-app">
+    <nav id="book_list">
+      <details>
+        <summary>Book Shelf (click to open)</summary>
+
+        <ul class="book-list">
+          <!-- Add your books here. If the book is an epub, then add the class `epub` -->
+          <li>
+            <a class="epub" href="novels/Dracula.epub">Dracula</a>
+          </li>
+
+          <!-- With HTML books you can navigate out of this page,
+            or open them in a new tab (`target="_blank"`)
+          -->
+          <li>
+            <a href="deployment_from_scratch/web_chapters/0.html">Deployment from Scratch</a>
+          </li>
+        </ul>
+      </details>
+    </nav>
+
+    <aside id="toc_sidebar">
+      <ul id="toc"></ul>
+    </aside>
+
+    <article id="viewer"></article>
+
+    <section id="extras">
+      <h2>Highlights</h2>
+      <aside id="highlights"></aside>
+    </section>
+  </section>
+
+  <aside id="controls">
+    <a id="prev" href="#prev" class="arrow">‹</a>
+    <a id="next" href="#next" class="arrow">›</a>
+  </aside>
+
+  <footer>
+    <ul>
+      <li><a href="https://github.com/futurepress/epub.js">ePubJS repository</a></li>
+      <li>
+        <a href="http://epubjs.org/documentation/0.3/">ePubJS documentation</a>
+        (<a href="https://github.com/futurepress/epub.js/blob/master/documentation/md/API.md">markdown version</a>)
+      </li>
+      <li><a href="https://futurepress.github.io/epub.js/examples/">ePubJS examples</a></li>
+      <li><a href="https://futurepress.github.io/epubjs-reader/">ePubJS Reader example</a></li>
+    </ul>
+  </footer>
+
+  <script src="./js/main.js"></script>
+</body>
+</html>

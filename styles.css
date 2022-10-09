@@ -1,0 +1,183 @@
+:root {
+  --black: #353535;
+  --red: #D46A6A;
+  --green: #55AA55;
+  --yellow: #F1E845;
+  --blue: #485492;
+  --magenta: #72408F;
+  --cyan: #28B8BF;
+  --white: #ffffff;
+  --black-1: #0c141f;
+  --red-1: #FFAAAA;
+  --green-1: #88CC88;
+  --yellow-1: #FFF871;
+  --blue-1: #6F79AE;
+  --magenta-1: #9168AB;
+  --cyan-1: #4EC5CB;
+  --white-1: #e6ffff;
+
+  --bg: var(--black);
+  --bg-dark: var(--black-1);
+  --fg: var(--white);
+  --fg-dark: var(--white-1);
+  --border-color: #CCCCCC;
+  --border-color-dark: #AAAAAA;
+
+  --bg-pattern: radial-gradient(black 15%, transparent 16%) 0 0,
+      radial-gradient(black 15%, transparent 16%) 8px 8px,
+      radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 0 1px,
+      radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 8px 9px;
+  --bg-pattern-size: 20px 20px;
+  --danger: #D54F4F;
+  --link-color: var(--yellow);
+
+  --bottomnav-height: 4rem;
+  --bg-navbar: #404040;
+
+  --toc-bg: rgba(0, 0, 0, 0.35);
+  --toc-current-fg: var(--cyan);
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg: #fffae5;
+    --bg-dark: var(--white-1);
+    --fg: var(--black);
+    --fg-dark: var(--black-1);
+    --border-color: #CCCCCC;
+    --border-color-dark: #AAAAAA;
+
+    --bg-pattern: "";
+    --bg-pattern-size: "";
+    --link-color: var(--blue);
+    --bg-navbar: #fff1b8;
+
+    --toc-bg: rgba(0, 0, 0, 0.05);
+    --toc-current-fg: var(--magenta);
+  }
+}
+
+body {
+  /* background: var(--bg-pattern); */
+  /* background-size: var(--bg-pattern-size); */
+  background-color: var(--bg);
+  color: var(--fg);
+  font: normal 24px/28px serif;
+  max-width: 95%;
+  margin: 2rem auto;
+}
+
+a, a:visited { color: var(--link-color); }
+abbr { cursor: help; }
+
+body > footer {
+  opacity: 0.1;
+}
+body > footer:hover {
+  opacity: 1;
+}
+
+details {
+  border-radius: 10px;
+  padding: 0.25em;
+}
+
+details[open] {
+  background-color: var(--toc-bg);
+}
+
+details summary {
+  border-radius: 10px 10px 0 0;
+}
+
+/****** grid layout ******/
+#book-app {
+  max-width: 100%;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-auto-rows: minmax(3em, auto);
+  grid-template-areas:
+    "header header header header header"
+    "toc    reader reader reader reader"
+    "extras extras extras extras extras";
+  row-gap: 0.5em;
+}
+
+#book-app #book_list {
+  grid-area: header;
+}
+#book-app #toc_sidebar {
+  grid-area: toc;
+  overflow: scroll;
+  height: 80vh; /* should be the same as used for ePub rendition in JS */
+  max-height: 80vh; /* should be the same as used for ePub rendition in JS */
+  background-color: var(--toc-bg);
+  border-radius: 10px;
+}
+#book-app #viewer {
+  grid-area: reader;
+}
+#book-app #extras {
+  grid-area: extras;
+}
+
+.flex { display: flex; flex-flow: row wrap; }
+.justify-start { justify-content: start; }
+.justify-around { justify-content: space-around; }
+.justify-between { justify-content: space-between; }
+.justify-end { justify-content: end; }
+.flex > * { margin: 0.25em 0.5em; }
+.x-large { font-size: x-large; }
+.xx-large { font-size: xx-large; }
+.m-0 { margin: 0; }
+.my-2 { margin: 0.5em 0; }
+
+#book_title {
+  line-height: 1.125em;
+}
+
+.book-list {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: baseline;
+}
+.book-list li {
+  max-width: 30%;
+  margin: 0.25em 0.5em;
+}
+
+#toc {
+  font-size: 0.75em;
+  list-style-type: circle;
+  margin-left: 0;
+  padding: 0 0.5em 0 1.5em;
+}
+
+#toc .toc-entry.current,
+#toc .toc-entry.current:visited {
+  color: var(--toc-current-fg);
+}
+
+span.dropcaps2line {
+  float: left;
+  font-size: 3em;
+  padding-right: 0px;
+  padding-top: 4px;
+  margin-right: 0em;
+  margin-top: 0;
+  margin-bottom: 0;
+  font-family: serif;
+}
+
+/****** books specific ******/
+
+/* Deployment From Scratch */
+.cat {
+  color: var(--black-1);
+  page-break-inside: avoid;
+}
+.refbox {
+  color: var(--black-1);
+  page-break-inside: avoid;
+}
